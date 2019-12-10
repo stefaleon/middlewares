@@ -9,14 +9,15 @@ export const saveComment = comment => {
   };
 };
 
-export const fetchComments = async () => {
-  const res = await axios.get("http://jsonplaceholder.typicode.com/comments");
+// remove async-await -> the custom middleware will do the job
+export const fetchComments = () => {
+  const res = axios.get("http://jsonplaceholder.typicode.com/comments");
 
-  console.log(res.data);
-
+  // payload has to be a promise initially, and the resolve afterwards
+  // so it will be res instead of res.data and we chain the data thing in the reducer mapping
   return {
     type: FETCH_COMMENTS,
-    payload: res.data
+    payload: res
   };
 };
 
