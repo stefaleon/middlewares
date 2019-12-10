@@ -5,6 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 //import reduxPromise from "redux-promise";
 import myAsync from "./middleware/async";
+import stateValidator from "./middleware/stateValidator";
 
 import reducers from "./reducers";
 
@@ -14,7 +15,7 @@ const Root = ({ children, initialState }) => {
       store={createStore(
         reducers,
         initialState,
-        composeWithDevTools(applyMiddleware(myAsync))
+        composeWithDevTools(applyMiddleware(myAsync, stateValidator))
       )}
     >
       {children}

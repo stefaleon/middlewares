@@ -1,5 +1,5 @@
 export default ({ dispatch }) => next => action => {
-  debugger;
+  // debugger;
 
   // if the action is not a promise, next it
   if (!action.payload || !action.payload.then) {
